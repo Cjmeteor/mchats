@@ -1,9 +1,9 @@
 package com.mchat.utils;
 
 /**
- * @description:
- * @author: zhangwenzhi
- * @time: 2020/4/15 8:48
+ * @description
+ * @author zhangwenzhi
+ * @date 2020/4/15 8:48
  */
 public class Constant {
     //数据源

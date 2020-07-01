@@ -1,9 +1,9 @@
 package com.mchat.utils;
 
 /**
- * @description:
- * @author: zhangwenzhi
- * @time: 2020/4/15 10:00
+ * @description
+ * @author zhangwenzhi
+ * @date 2020/4/15 10:00
  */
 public class StringUtils {
     public static boolean isBlank(CharSequence cs) {

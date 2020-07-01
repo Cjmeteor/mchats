@@ -39,15 +39,18 @@
             <artifactId>postgresql</artifactId>
             <version>8.2-504.jdbc3</version>
         </dependency>
-        <!--		websocket-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
+
         <!-- websocket依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
+
+        <!--mybatis-->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.2.8</version>
         </dependency>
 
     </dependencies>

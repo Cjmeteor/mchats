@@ -1,8 +1,10 @@
 package com.mchat.dao;
 
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * ChatDao
@@ -13,5 +15,12 @@ import java.util.List;
  */
 @Service
 public interface ChatDao {
-    List queryUser() throws Exception;
+    List queryUser(Map para) throws Exception;
+
+    /**
+     * 登录验证
+     * @author zhangwenzhi
+     * @date 2020/6/30 15:56
+     */
+    List verifyLoginInfo(Map para) throws Exception;
 }

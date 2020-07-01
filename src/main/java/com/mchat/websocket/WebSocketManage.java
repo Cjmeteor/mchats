@@ -45,6 +45,10 @@ public class WebSocketManage {
     @OnOpen
     public void onOpen(@PathParam("userid")String userid,Session session) {
         this.session = session;
+        /*if(webSocketMap.containsKey(userid)){
+            System.out.println("该连接已存在！当前在线人数为" + getOnlineCount());
+            return;
+        };*/
         webSocketMap.put(userid,this);     //加入set中
         addOnlineCount();           //在线数加1
         System.out.println("有新连接加入！当前在线人数为" + getOnlineCount());
@@ -54,8 +58,8 @@ public class WebSocketManage {
      * 连接关闭调用的方法
      */
     @OnClose
-    public void onClose(@PathParam("userId")String userId) {
-        webSocketMap.remove(userId);  //从set中删除
+    public void onClose() {
+        webSocketMap.remove(this);  //从set中删除
         subOnlineCount();           //在线数减1    
         System.out.println("有一连接关闭！当前在线人数为" + getOnlineCount());
     }
@@ -71,10 +75,14 @@ public class WebSocketManage {
         System.out.println("来自客户端的消息:" + message);
 
         JSONObject jo = JSONObject.parseObject(message);
-        String to = jo.getString("to");
-        String text = jo.getString("text");
-        WebSocketManage item = webSocketMap.get(to);
-        item.sendMessage(text);
+
+        JSONObject content = jo.getJSONObject("content");
+        String targetId = content.getString("targetId");
+
+        if(webSocketMap.containsKey(targetId)){
+            WebSocketManage item = webSocketMap.get(targetId);
+            item.sendMessage(message);
+        };
 
         //群发消息
         /*for (WebSocketManage item : webSocketMap) {
